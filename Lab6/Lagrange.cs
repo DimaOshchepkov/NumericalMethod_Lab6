@@ -16,18 +16,26 @@ namespace Lab6
 
         public double GetValue(double x)
         {
-            double value = 0;
-            for (int i = 0; i < func.Length; i++)
+            try
             {
-                double P = 1;
-                for (int j = 0; j < func.Length; j++)
+                double value = 0;
+                for (int i = 0; i < func.Length; i++)
                 {
-                    if (i != j)
-                        P *= (x - func.args[j]) / (func.args[i] - func.args[j]);
+                    double P = 1;
+                    for (int j = 0; j < func.Length; j++)
+                    {
+                        if (i != j)
+                            P *= (x - func.args[j]) / (func.args[i] - func.args[j]);
+                    }
+                    value += P * func.values[i];
                 }
-                value += P * func.values[i];
+                return value;
             }
-            return value;
+            catch (Exception e)
+            {
+                Console.WriteLine("Функция имела неверный формат");
+                throw e;
+            }
         }
     }
 }

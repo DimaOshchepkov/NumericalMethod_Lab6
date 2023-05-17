@@ -47,12 +47,6 @@ namespace Lab6
         }
         static void Task3()
         {
-
-        }
-        static void Main(string[] args)
-        {
-            Task2();
-
             Console.WriteLine("Как вы хотите считать файл?\n1. Консоль\n2. Файл");
             int ans = -1;
             while (!int.TryParse(Console.ReadLine(), out ans) || ans <= 0 || ans > 2)
@@ -62,11 +56,19 @@ namespace Lab6
             Function f;
             double x;
             if (ans == 1)
-                    r = new ConsoleReader();
+                r = new ConsoleReader();
             else if (ans == 2)
-                    r = new FileReader();
+                r = new FileReader();
 
             (f, x) = r.Read();
+            Lagrange lagrange = new Lagrange(f);
+            Console.WriteLine($"Значение в точке {x} = {lagrange.GetValue(x)}");
+        }
+        [STAThreadAttribute]
+        static void Main(string[] args)
+        {
+            Task2();
+            Task3();       
             Console.ReadKey();
         }
     }

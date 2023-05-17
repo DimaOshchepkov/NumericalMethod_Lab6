@@ -11,18 +11,21 @@ namespace Lab6
     {
         (Function f, double x) ReaderFunction.Read()
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog)
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 try
                 {
+                    openFileDialog.InitialDirectory = Environment.CurrentDirectory;
                     if (openFileDialog.ShowDialog() == DialogResult.Cancel)
                         return (null, 0);
 
                     string filename = openFileDialog.FileName;
-                    string[] fileText = System.IO.File.ReadAllText(filename).Split('\n');
+                    string[] fileText = System.IO.File.ReadAllText(filename).Split(new char[] { '\n', '\r' }, 
+                            StringSplitOptions.RemoveEmptyEntries);
                     string[] n_x = fileText[0].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-                    int n = int.Parse(n_x[0]), x = int.Parse(n_x[1]);
+                    int n = int.Parse(n_x[0]);
+                    double x = double.Parse(n_x[1]);
                     double[] arg = Array.ConvertAll(fileText[1].Split(new char[] { ' ' },
                         StringSplitOptions.RemoveEmptyEntries), Double.Parse);
                     double[] values = Array.ConvertAll(fileText[2].Split(new char[] { ' ' },
@@ -34,7 +37,7 @@ namespace Lab6
                 {
                     Console.WriteLine("Файл имел неверный формат");
                     Console.WriteLine($"Ошибка {e}");
-                    return (null, 0);
+                    throw e;
                 }
             }
         }
