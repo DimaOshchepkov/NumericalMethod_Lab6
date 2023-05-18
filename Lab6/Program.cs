@@ -68,7 +68,13 @@ namespace Lab6
         static void Main(string[] args)
         {
             //Task2();
-            //Task3();       
+            //Task3();
+
+            ReaderFunction fr = new FileReader();
+            var (f, x) = fr.Read();
+            InterpolationMethod newton = new NewtonFirst(f);
+            Console.WriteLine($"Значение функции в точке {x} = {newton.GetValue(x)}");
+
             Console.ReadKey();
         }
     }
