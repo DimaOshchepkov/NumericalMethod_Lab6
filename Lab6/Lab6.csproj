@@ -48,7 +48,9 @@
     <Compile Include="ConsoleReader.cs" />
     <Compile Include="FileReader.cs" />
     <Compile Include="Function.cs" />
+    <Compile Include="InterpolationMethod.cs" />
     <Compile Include="Lagrange.cs" />
+    <Compile Include="NewtonFirst.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReaderFunction.cs" />

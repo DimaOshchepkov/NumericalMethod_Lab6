@@ -67,8 +67,8 @@ namespace Lab6
         [STAThreadAttribute]
         static void Main(string[] args)
         {
-            Task2();
-            Task3();       
+            //Task2();
+            //Task3();       
             Console.ReadKey();
         }
     }

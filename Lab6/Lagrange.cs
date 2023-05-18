@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace Lab6
 {
-    class Lagrange
+    class Lagrange : InterpolationMethod
     {
-        public Function func;
-        public Lagrange(Function f)
-        {
-            func = f;
-        }
+        public Lagrange(Function f) : base(f) { }
 
-        public double GetValue(double x)
+        public override double GetValue(double x)
         {
             try
             {
