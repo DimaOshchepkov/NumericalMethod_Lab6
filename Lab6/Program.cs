@@ -72,8 +72,11 @@ namespace Lab6
 
             ReaderFunction fr = new FileReader();
             var (f, x) = fr.Read();
-            InterpolationMethod newton = new NewtonFirst(f);
-            Console.WriteLine($"Значение функции в точке {x} = {newton.GetValue(x)}");
+            NewtonInterpolation newton1 = new NewtonFirst(f);
+            NewtonInterpolation newton2 = new NewtonSecond(f);
+            Console.WriteLine($"Значение функции в точке {x} = {newton1.GetValue(x)}");
+            Console.WriteLine($"Значение функции в точке {x} = {newton2.GetValue(x)}");
+
 
             Console.ReadKey();
         }

@@ -8,9 +8,12 @@ namespace Lab6
 {
     class Lagrange : InterpolationMethod
     {
-        public Lagrange(Function f) : base(f) { }
+        Function func;
+        public Lagrange(Function f){
+            func = f;
+        }
 
-        public override double GetValue(double x)
+        public double GetValue(double x)
         {
             try
             {

@@ -52,6 +52,7 @@
     <Compile Include="Lagrange.cs" />
     <Compile Include="NewtonFirst.cs" />
     <Compile Include="NewtonMethod.cs" />
+    <Compile Include="NewtonSecond.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReaderFunction.cs" />

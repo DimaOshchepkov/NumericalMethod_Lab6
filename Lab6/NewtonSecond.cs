@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Lab6
 {
-    class NewtonFirst : NewtonInterpolation
+    class NewtonSecond : NewtonInterpolation
     {
         Function func;
-        public NewtonFirst(Function f){
+        public NewtonSecond(Function f)
+        {
             func = f;
         }
 
@@ -19,14 +20,14 @@ namespace Lab6
             double h = (func.args.Max() - func.args.Min()) / (func.Length - 1);
             double n_fact = 1;
 
-            double value = func.values[0];
-            for (int i = 1; i < func.Length; i++)
+            double value = func.values[func.Length - 1];
+            for (int i = func.Length - 1; i > 0; i--)
             {
-                n_fact *= i;
+                n_fact *= (func.Length - i);
 
-                double mult = dy[0, i] / n_fact;
-                for (int j = 0; j < i; j++)
-                    mult *= (x - func.args[j])/h;
+                double mult = dy[i - 1, dy.GetLength(0) - i] / n_fact;
+                for (int j = func.Length - 1; j >= i; j--)
+                    mult *= (x - func.args[j]) / h;
 
                 value += mult;
             }

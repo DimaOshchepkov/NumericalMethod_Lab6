@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lab6
 {
-    abstract class NewtonMethod
+    abstract class NewtonInterpolation : InterpolationMethod
     {
-        protected double[] GetTableOfDelta(Function func)
+        protected double[,] GetTableOfDelta(Function func)
         {
             double[,] dy = new double[func.Length, func.Length];
             for (int i = 0; i < dy.GetLength(1); i++)
@@ -18,11 +18,8 @@ namespace Lab6
                 for (int j = 0; j < dy.GetLength(1) - i; j++)
                     dy[j, i] = dy[j + 1, i - 1] - dy[j, i - 1];
 
-            double[] ou = new double[dy.GetLength(0)];
-            for (int i = 0; i < dy.GetLength(0); i++)
-                ou[i] = dy[0, i];
-
-            return ou;
+            return dy;
         }
+        abstract public double GetValue(double x);
     }
 }

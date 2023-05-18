@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace Lab6
 {
-    abstract class InterpolationMethod
+    interface InterpolationMethod
     {
-        public Function func;
-        public InterpolationMethod(Function f)
-        {
-            func = f;
-        }
-        public abstract double GetValue(double x);
+        double GetValue(double x);
     }
 }
