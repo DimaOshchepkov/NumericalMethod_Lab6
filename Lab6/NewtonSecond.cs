@@ -9,23 +9,25 @@ namespace Lab6
     class NewtonSecond : NewtonInterpolation
     {
         Function func;
-        public NewtonSecond(Function f)
+        double eps;
+        public NewtonSecond(Function f, double eps = 0)
         {
+            this.eps = eps;
             func = f;
         }
 
         public override double GetValue(double x)
         {
-            double[,] dy = GetTableOfDelta(this.func);
+            List<List<double>> dy = GetTableOfDelta(this.func, eps);
             double h = (func.args.Max() - func.args.Min()) / (func.Length - 1);
             double n_fact = 1;
 
-            double value = func.values[func.Length - 1];
-            for (int i = func.Length - 1; i > 0; i--)
+            double value = func.values[dy.Count - 1];
+            for (int i = dy.Count - 1; i > dy.Count - dy[0].Count; i--)
             {
                 n_fact *= (func.Length - i);
 
-                double mult = dy[i - 1, dy.GetLength(0) - i] / n_fact;
+                double mult = dy[i - 1][dy.Count - i] / n_fact;
                 for (int j = func.Length - 1; j >= i; j--)
                     mult *= (x - func.args[j]) / h;
 

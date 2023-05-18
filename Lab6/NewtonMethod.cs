@@ -8,15 +8,28 @@ namespace Lab6
 {
     abstract class NewtonInterpolation : InterpolationMethod
     {
-        protected double[,] GetTableOfDelta(Function func)
+        protected List<List<double>> GetTableOfDelta(Function func, double eps = 0)
         {
-            double[,] dy = new double[func.Length, func.Length];
-            for (int i = 0; i < dy.GetLength(1); i++)
-                dy[i, 0] = func.values[i];
+            List<List<double>> dy = new List<List<double>>();
+            for (int i = 0; i < func.Length; i++) 
+                dy.Add(new List<double>());
 
-            for (int i = 1; i < dy.GetLength(1); i++)
-                for (int j = 0; j < dy.GetLength(1) - i; j++)
-                    dy[j, i] = dy[j + 1, i - 1] - dy[j, i - 1];
+            for (int i = 0; i < func.Length; i++)
+                dy[i].Add(func.values[i]);
+
+            for (int i = 1; i < func.Length; i++)
+                for (int j = 0; j < func.Length - i; j++)
+                {
+                    double d = dy[j + 1][i - 1] - dy[j][i - 1];
+                    if (Math.Abs(d) < eps)
+                    {
+                        for (int k = 0; k < j; k++)
+                            dy[k].RemoveAt(dy[k].Count - 1);
+
+                        return dy;
+                    }
+                    dy[j].Add(d);
+                }
 
             return dy;
         }
