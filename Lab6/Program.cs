@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using Lab6.ApprocsimationMethods;
 
 namespace Lab6
 {
@@ -64,12 +65,9 @@ namespace Lab6
             Lagrange lagrange = new Lagrange(f);
             Console.WriteLine($"Значение в точке {x} = {lagrange.GetValue(x)}");
         }
-        [STAThreadAttribute]
-        static void Main(string[] args)
-        {
-            //Task2();
-            //Task3();
 
+        static void Task4()
+        {
             Console.WriteLine("Как вы хотите считать файл?\n1. Консоль\n 2. Файл");
             string input = Console.ReadLine();
             ReaderFunction fr = new FileReader();
@@ -84,6 +82,24 @@ namespace Lab6
             NewtonInterpolation newton2 = new NewtonSecond(f, eps);
             Console.WriteLine($"Значение функции в точке {x} = {newton1.GetValue(x)}");
             Console.WriteLine($"Значение функции в точке {x} = {newton2.GetValue(x)}");
+        }
+
+        [STAThreadAttribute]
+        static void Main(string[] args)
+        {
+            //Task2();
+            //Task3();
+            //Task4();
+
+            Console.WriteLine("Как вы хотите считать файл?\n1. Консоль\n 2. Файл");
+            string input = Console.ReadLine();
+            ReaderFunction fr = new FileReader();
+            if (input == "1")
+                fr = new ConsoleReader();
+            var (f, x) = fr.Read();
+
+            var LSM = new LeastSquareMethod(f, new PoweredFunctionLSM());
+            Console.WriteLine($"Значение функции в точке {x} = {LSM.GetValue(x)}");
 
 
             Console.ReadKey();

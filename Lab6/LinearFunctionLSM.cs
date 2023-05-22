@@ -8,7 +8,8 @@ namespace Lab6
 {
     class LinearFunctionLSM : IFunctionApprocsimationLSM
     {
-        (double a, double b) IFunctionApprocsimationLSM.GetParams(Function f)
+        Func<double, double> mapX { get; set; }
+        public virtual (double a, double b) GetParams(Function f)
         {
             double sum_x = 0;
             double sum_y = 0;

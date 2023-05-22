@@ -8,20 +8,16 @@ namespace Lab6.ApprocsimationMethods
 {
     class LeastSquareMethod : InterpolationMethod
     {
-        Func<double, double> mapA;
-        Func<double, double> mapB;
-
-        Function func;
-        LeastSquareMethod(Function f, Func<double, double> mapA, Func<double, double> mapB)
+        (double a, double b, Func<double, double> mapX) param;
+        public LeastSquareMethod(Function f, IFunctionApprocsimationLSM funcAppr)
         {
-            this.mapA = mapA;
-            this.mapB = mapB;
-            func = f;
+            param = funcAppr.GetParams(f);
         }
 
         public double GetValue(double x)
         {
-            
+            x = param.mapX(x);
+            return param.a * Math.Pow(x, param.b);
         }
     }
 }

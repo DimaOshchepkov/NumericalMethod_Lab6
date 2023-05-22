@@ -48,6 +48,7 @@
     <Compile Include="ApprocsimationMethods\LeastSquareMethod.cs" />
     <Compile Include="IFunctionApprocsimationLSM.cs" />
     <Compile Include="LinearFunctionLSM.cs" />
+    <Compile Include="PoweredFunctionLSM.cs" />
     <Compile Include="ReadFunction\ConsoleReader.cs" />
     <Compile Include="ReadFunction\FileReader.cs" />
     <Compile Include="Function.cs" />
