@@ -18,6 +18,7 @@ namespace Lab6
         public override double GetValue(double x)
         {
             List<List<double>> dy = GetTableOfDelta(this.func, eps);
+            Console.WriteLine($"Многочлен степени {dy[0].Count}");
             double h = (func.args.Max() - func.args.Min()) / (func.Length - 1);
             double n_fact = 1;
 

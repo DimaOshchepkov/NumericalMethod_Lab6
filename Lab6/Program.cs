@@ -70,10 +70,18 @@ namespace Lab6
             //Task2();
             //Task3();
 
+            Console.WriteLine("Как вы хотите считать файл?\n1. Консоль\n 2. Файл");
+            string input = Console.ReadLine();
             ReaderFunction fr = new FileReader();
+            if (input == "1")
+                fr = new ConsoleReader();
             var (f, x) = fr.Read();
-            NewtonInterpolation newton1 = new NewtonFirst(f, 0.02);
-            NewtonInterpolation newton2 = new NewtonSecond(f, 0.02);
+
+            Console.WriteLine("Введите погрешность");
+            double eps = double.Parse(Console.ReadLine());
+
+            NewtonInterpolation newton1 = new NewtonFirst(f, eps);
+            NewtonInterpolation newton2 = new NewtonSecond(f, eps);
             Console.WriteLine($"Значение функции в точке {x} = {newton1.GetValue(x)}");
             Console.WriteLine($"Значение функции в точке {x} = {newton2.GetValue(x)}");
 
