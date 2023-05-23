@@ -45,12 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApprocsimationMethods\LeastSquareMethod.cs" />
-    <Compile Include="ExpFunctionMapperLSE.cs" />
-    <Compile Include="IFunctionApprocsimationLSM.cs" />
-    <Compile Include="IMapperXY.cs" />
-    <Compile Include="LinearFunctionLSM.cs" />
-    <Compile Include="PoweredFunctionLSM.cs" />
+    <Compile Include="ApprocsimationMethods\LSE\LeastSquareMethod.cs" />
+    <Compile Include="Mappers\ExpFunctionMapperLSE.cs" />
+    <Compile Include="Mappers\FractionllyIrrationalMapperLSE.cs" />
+    <Compile Include="ApprocsimationMethods\LSE\IFunctionApprocsimationLSM.cs" />
+    <Compile Include="Mappers\IMapperXY.cs" />
+    <Compile Include="ApprocsimationMethods\LSE\LinearFunctionLSM.cs" />
+    <Compile Include="Mappers\LogMapperLSE.cs" />
+    <Compile Include="Mappers\PoweredMapperLSM.cs" />
     <Compile Include="ReadFunction\ConsoleReader.cs" />
     <Compile Include="ReadFunction\FileReader.cs" />
     <Compile Include="Function.cs" />
@@ -62,7 +64,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadFunction\ReaderFunction.cs" />
-    <Compile Include="ReverseLinearMapperLSE.cs" />
+    <Compile Include="Mappers\ReverseLinearMapperLSE.cs" />
+    <Compile Include="Mappers\HyperbolicMapperLSE.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

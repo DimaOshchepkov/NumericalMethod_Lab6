@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace Lab6
 {
-    public class PoweredFunctionLSM : IMapperXY
+    internal class ReverseLinearMapperLSE : IMapperXY
     {
-        public PoweredFunctionLSM()
+        public ReverseLinearMapperLSE()
         {
-            mapX = x => Math.Log(x);
-            mapY = y => Math.Log(y);
-            mapA = a=> Math.Exp(a);
+            mapX = x => x;
+            mapY = y => 1/y;
+            mapA = a => a;
             mapB = b => b;
             linearFunctionLSM = new LinearFunctionLSM();
         }
         public override double Return(double x, double A, double B)
         {
-            double a = mapA(B);
-            double b = mapB(A);
-            return a * Math.Pow(x, b);
+            double a = mapA(A);
+            double b = mapB(B);
+            return 1/(a * x + b);
         }
     }
 }

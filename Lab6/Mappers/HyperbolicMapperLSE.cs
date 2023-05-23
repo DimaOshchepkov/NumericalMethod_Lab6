@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace Lab6
 {
-    internal class ReverseLinearMapperLSE : IMapperXY
+    internal class HyperbolicMapperLSE : IMapperXY
     {
-        public ReverseLinearMapperLSE()
+        public HyperbolicMapperLSE()
         {
-            mapX = x => x;
-            mapY = y => 1/y;
+            mapX = x => 1 / x;
+            mapY = y => y;
             mapA = a => a;
             mapB = b => b;
             linearFunctionLSM = new LinearFunctionLSM();
         }
         public override double Return(double x, double A, double B)
         {
-            double a = mapA(B);
-            double b = mapB(A);
-            return a * x + b;
+            double a = mapA(A);
+            double b = mapB(B);
+            return a / x + b;
         }
     }
 }

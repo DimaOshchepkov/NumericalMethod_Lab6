@@ -10,16 +10,29 @@ namespace Lab6.ApprocsimationMethods
     {
         (double a, double b) param;
         IMapperXY mapper;
+        Function func;
+        IFunctionApprocsimationLSM funcAppr;
         public LeastSquareMethod(Function f, IFunctionApprocsimationLSM funcAppr)
         {
+            this.func = f;
+            this.funcAppr = funcAppr;
             param = funcAppr.GetParams(f);
         }
 
-        public LeastSquareMethod(Function f, IFunctionApprocsimationLSM funcAppr, IMapperXY mapper)
+        public LeastSquareMethod(Function f, LinearFunctionLSM funcAppr, IMapperXY mapper)
         {
+            this.func = f;
             this.mapper = mapper;
-            Function func = mapper.Map(f);
+            this.funcAppr = funcAppr;
+            Function func = mapper.Map(this.func);
             param = funcAppr.GetParams(func);
+        }
+
+        public void SetMapper(IMapperXY mapperXY)
+        {
+            this.mapper = mapperXY;
+            Function func = mapper.Map(this.func);
+            param = this.funcAppr.GetParams(func);
         }
 
         public double GetValue(double x)

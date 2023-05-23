@@ -17,10 +17,10 @@ namespace Lab6
         
         public Function Map(Function f)
         {
-            double[] a = (f.args.Clone() as double[]);
-            double[] b = f.values.Clone() as double[];
-            a = a.Select(x => mapX(x)) as double[];
-            b = b.Select(y => mapY(y)) as double[];
+            double[] a = (double[])f.args.Clone();
+            double[] b = (double[])f.values.Clone();
+            a = a.Select(x => mapX(x)).ToArray<double>();
+            b = b.Select(y => mapY(y)).ToArray<double>(); 
 
             return new Function(a, b);
         }

@@ -98,8 +98,26 @@ namespace Lab6
                 fr = new ConsoleReader();
             var (f, x) = fr.Read();
 
-            var LSM = new LeastSquareMethod(f, new LinearFunctionLSM(), new ExpFunctionMapperLSE());
-            Console.WriteLine($"Значение функции в точке {x} = {LSM.GetValue(x)}");
+            var LSM = new LeastSquareMethod(f, new LinearFunctionLSM());
+            Console.WriteLine($"Значение линейной функции в точке {x} = {LSM.GetValue(x)}");
+
+            LSM.SetMapper(new PoweredMapperLSM());
+            Console.WriteLine($"Значение степенной функции в точке {x} = {LSM.GetValue(x)}");
+
+            LSM.SetMapper(new ExpFunctionMapperLSE());
+            Console.WriteLine($"Значение экспонециальной функции в точке {x} = {LSM.GetValue(x)}");
+
+            LSM.SetMapper(new ReverseLinearMapperLSE());
+            Console.WriteLine($"Значение обратно-линейной функции в точке {x} = {LSM.GetValue(x)}");
+
+            LSM.SetMapper(new FractionllyIrrationalMapperLSE());
+            Console.WriteLine($"Значение дробно-иррациональной функции в точке {x} = {LSM.GetValue(x)}");
+
+            LSM.SetMapper(new LogMapperLSE());
+            Console.WriteLine($"Значение логарифмической функции в точке {x} = {LSM.GetValue(x)}");
+
+            LSM.SetMapper(new HyperbolicMapperLSE());
+            Console.WriteLine($"Значение гиперболической функции в точке {x} = {LSM.GetValue(x)}");
 
 
             Console.ReadKey();
