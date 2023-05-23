@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab6
 {
-    class Function
+    public class Function
     {
         public double[] args { get; private set; }
         public double[] values { get; private set; }
@@ -31,5 +31,7 @@ namespace Lab6
                return args.Length;
             }
         }
+
+        
     }
 }

@@ -91,14 +91,14 @@ namespace Lab6
             //Task3();
             //Task4();
 
-            Console.WriteLine("Как вы хотите считать файл?\n1. Консоль\n 2. Файл");
+            Console.WriteLine("Как вы хотите считать файл?\n1. Консоль\n2. Файл");
             string input = Console.ReadLine();
             ReaderFunction fr = new FileReader();
             if (input == "1")
                 fr = new ConsoleReader();
             var (f, x) = fr.Read();
 
-            var LSM = new LeastSquareMethod(f, new PoweredFunctionLSM());
+            var LSM = new LeastSquareMethod(f, new LinearFunctionLSM(), new ExpFunctionMapperLSE());
             Console.WriteLine($"Значение функции в точке {x} = {LSM.GetValue(x)}");
 
 

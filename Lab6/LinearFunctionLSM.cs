@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lab6
 {
-    class LinearFunctionLSM : IFunctionApprocsimationLSM
+    public class LinearFunctionLSM : IFunctionApprocsimationLSM
     {
-        Func<double, double> mapX { get; set; }
-        public virtual (double a, double b) GetParams(Function f)
+        public (double a, double b) GetParams(Function f)
         {
             double sum_x = 0;
             double sum_y = 0;
