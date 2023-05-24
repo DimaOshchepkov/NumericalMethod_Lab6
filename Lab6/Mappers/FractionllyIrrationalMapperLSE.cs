@@ -10,8 +10,8 @@ namespace Lab6
     {
         public FractionllyIrrationalMapperLSE()
         {
-            mapX = x => 1 / x;
-            mapY = y => 1 / y;
+            mapX = x => { if (x == 0) throw new ArgumentException("x не должно быть равно 0"); return 1 / x; };
+            mapY = y => { if (y == 0) throw new ArgumentException("y не должно быть равно 0"); return 1 / y; };
             mapA = a => a;
             mapB = b => b;
             linearFunctionLSM = new LinearFunctionLSM();

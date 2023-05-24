@@ -10,7 +10,7 @@ namespace Lab6
     {
         public HyperbolicMapperLSE()
         {
-            mapX = x => 1 / x;
+            mapX = x => { if (x == 0) throw new ArgumentException("x не должно быть равно 0"); return 1 / x; };
             mapY = y => y;
             mapA = a => a;
             mapB = b => b;

@@ -90,6 +90,13 @@ namespace Lab6
             //Task2();
             //Task3();
             //Task4();
+            List<IMapperXY> mappers = new List<IMapperXY>()
+            {
+                new PoweredMapperLSM() , new ExpFunctionMapperLSE(),
+                new ReverseLinearMapperLSE(), new FractionllyIrrationalMapperLSE(),
+                new FractionllyIrrationalMapperLSE(), new LogMapperLSE(),
+                new HyperbolicMapperLSE()
+            };
 
             Console.WriteLine("Как вы хотите считать файл?\n1. Консоль\n2. Файл");
             string input = Console.ReadLine();
@@ -100,25 +107,30 @@ namespace Lab6
 
             var LSM = new LeastSquareMethod(f, new LinearFunctionLSM());
             Console.WriteLine($"Значение линейной функции в точке {x} = {LSM.GetValue(x)}");
+            Console.WriteLine($"Сумма квадратов отклонений = {LSM.GetRRS()}");
 
-            LSM.SetMapper(new PoweredMapperLSM());
-            Console.WriteLine($"Значение степенной функции в точке {x} = {LSM.GetValue(x)}");
-
-            LSM.SetMapper(new ExpFunctionMapperLSE());
-            Console.WriteLine($"Значение экспонециальной функции в точке {x} = {LSM.GetValue(x)}");
-
-            LSM.SetMapper(new ReverseLinearMapperLSE());
-            Console.WriteLine($"Значение обратно-линейной функции в точке {x} = {LSM.GetValue(x)}");
-
-            LSM.SetMapper(new FractionllyIrrationalMapperLSE());
-            Console.WriteLine($"Значение дробно-иррациональной функции в точке {x} = {LSM.GetValue(x)}");
-
-            LSM.SetMapper(new LogMapperLSE());
-            Console.WriteLine($"Значение логарифмической функции в точке {x} = {LSM.GetValue(x)}");
-
-            LSM.SetMapper(new HyperbolicMapperLSE());
-            Console.WriteLine($"Значение гиперболической функции в точке {x} = {LSM.GetValue(x)}");
-
+            foreach (var mapper in mappers)
+            {
+                Console.WriteLine();
+                try
+                {
+                    LSM.SetMapper(mapper);
+                    Console.WriteLine($"Значение степенной функции в точке {x} = {LSM.GetValue(x)}");
+                    Console.WriteLine($"Сумма квадратов отклонений = {LSM.GetRRS()}");
+                    Console.WriteLine($"a = {mapper.}")
+                }
+                catch (ArgumentException ae)
+                {
+                    Console.WriteLine("Невозможно применить аппроксимирющую функцию");
+                    Console.WriteLine(ae.Message);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Произошла непредвиденная ошибка");
+                    Console.WriteLine(e.Message);
+                }
+             
+            }              
 
             Console.ReadKey();
         }

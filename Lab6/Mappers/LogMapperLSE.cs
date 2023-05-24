@@ -10,7 +10,7 @@ namespace Lab6
     {
         public LogMapperLSE()
         {
-            mapX = x => Math.Log(x);
+            mapX = x => { if (x < 0) throw new ArgumentException("x должно быть больше 0"); return Math.Log(x); };
             mapY = y => y;
             mapA = a => a;
             mapB = b => b;

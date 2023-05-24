@@ -10,8 +10,8 @@ namespace Lab6
     {
         public PoweredMapperLSM()
         {
-            mapX = x => Math.Log(x);
-            mapY = y => Math.Log(y);
+            mapX = x => { if (x < 0) throw new ArgumentException("x должно быть больше 0"); return Math.Log(x); };
+            mapY = y => { if (y < 0) throw new ArgumentException("y должно быть больше 0"); return Math.Log(y); };
             mapA = a => Math.Exp(a);
             mapB = b => b;
             linearFunctionLSM = new LinearFunctionLSM();

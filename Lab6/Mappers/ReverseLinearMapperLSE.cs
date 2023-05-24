@@ -11,7 +11,7 @@ namespace Lab6
         public ReverseLinearMapperLSE()
         {
             mapX = x => x;
-            mapY = y => 1/y;
+            mapY = y => { if (y == 0) throw new ArgumentException("y не должно быть равно 0"); return 1 / y; };
             mapA = a => a;
             mapB = b => b;
             linearFunctionLSM = new LinearFunctionLSM();

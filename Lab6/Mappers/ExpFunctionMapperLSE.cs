@@ -11,7 +11,7 @@ namespace Lab6
         public ExpFunctionMapperLSE()
         {
             mapX = x => x;
-            mapY = y => Math.Log(y);
+            mapY = (y) => { if (y < 0) throw new ArgumentException("у должно быть больше 0"); return Math.Log(y); };
             mapA = a => Math.Exp(a);
             mapB = b => b;
             linearFunctionLSM = new LinearFunctionLSM();
