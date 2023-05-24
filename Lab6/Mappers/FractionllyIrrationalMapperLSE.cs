@@ -20,7 +20,10 @@ namespace Lab6
         {
             double a = mapA(A);
             double b = mapB(B);
+            param = (a, b);
             return x / (a * x + b);
         }
+
+        public override string ToString() => $"x / ({param.a} * x + {param.b}";
     }
 }

@@ -8,6 +8,7 @@ namespace Lab6
 {
     public class LinearFunctionLSM : IFunctionApprocsimationLSM
     {
+        public (double a, double b) param { get; set; }
         public (double a, double b) GetParams(Function f)
         {
             double sum_x = 0;
@@ -26,7 +27,10 @@ namespace Lab6
             double det1 = sum_xy * f.Length - sum_y * sum_x;
             double det2 = sum_x_powered * sum_y - sum_x * sum_xy;
             double a = det1 / det, b = det2 / det;
+            param = (a, b);
             return (a, b);   
         }
+
+        public override string ToString() => $"{param.a} * x + {param.b}";
     }
 }

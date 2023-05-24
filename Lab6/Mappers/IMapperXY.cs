@@ -14,6 +14,7 @@ namespace Lab6
         protected Func<double, double> mapA { get; set; }
         protected Func<double, double> mapB { get; set; }
         protected LinearFunctionLSM linearFunctionLSM { get; set; }
+        public (double a, double b) param;
         
         public Function Map(Function f)
         {

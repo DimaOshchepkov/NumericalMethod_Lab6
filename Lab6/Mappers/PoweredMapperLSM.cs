@@ -20,7 +20,10 @@ namespace Lab6
         {
             double a = mapA(B);
             double b = mapB(A);
+            param = (a, b);
             return a * Math.Pow(x, b);
         }
+
+        public override string ToString() => $"{param.a} * x^{param.b}";
     }
 }

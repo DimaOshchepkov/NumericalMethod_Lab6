@@ -108,6 +108,7 @@ namespace Lab6
             var LSM = new LeastSquareMethod(f, new LinearFunctionLSM());
             Console.WriteLine($"Значение линейной функции в точке {x} = {LSM.GetValue(x)}");
             Console.WriteLine($"Сумма квадратов отклонений = {LSM.GetRRS()}");
+            Console.WriteLine($"Функция имеет вид {LSM.ToString()}");
 
             foreach (var mapper in mappers)
             {
@@ -115,9 +116,9 @@ namespace Lab6
                 try
                 {
                     LSM.SetMapper(mapper);
-                    Console.WriteLine($"Значение степенной функции в точке {x} = {LSM.GetValue(x)}");
-                    Console.WriteLine($"Сумма квадратов отклонений = {LSM.GetRRS()}");
-                    Console.WriteLine($"a = {mapper.}")
+                    Console.WriteLine($"Функция имеет вид {LSM.ToString()}");
+                    Console.WriteLine($"Значение в точке {x} = {LSM.GetValue(x)}");
+                    Console.WriteLine($"Сумма квадратов отклонений = {LSM.GetRRS()}");                
                 }
                 catch (ArgumentException ae)
                 {

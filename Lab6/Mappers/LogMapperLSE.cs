@@ -20,7 +20,10 @@ namespace Lab6
         {
             double a = mapA(A);
             double b = mapB(B);
+            param = (a, b);
             return a * Math.Log(x) + b;
         }
+
+        public override string ToString() => $"{param.a} * ln(x) + {param.b}";
     }
 }

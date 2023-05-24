@@ -8,7 +8,7 @@ namespace Lab6.ApprocsimationMethods
 {
     class LeastSquareMethod : InterpolationMethod
     {
-        public (double a, double b) param { get; private set; }
+        public (double A, double B) param { get; private set; }
         IMapperXY mapper;
         Function func;
         IFunctionApprocsimationLSM funcAppr;
@@ -43,9 +43,9 @@ namespace Lab6.ApprocsimationMethods
         public double GetValue(double x)
         {
             if (mapper == null)
-                return param.a * x + param.b;
+                return param.A * x + param.B;
 
-            return mapper.Return(x, param.a, param.b);
+            return mapper.Return(x, param.A, param.B);
         }
 
         public double GetRRS()
@@ -55,6 +55,14 @@ namespace Lab6.ApprocsimationMethods
                 sum += Math.Pow(func.values[i] - GetValue(func.args[i]), 2);
 
             return sum;
+        }
+
+        public override string ToString()
+        {
+            if (mapper == null)
+                return funcAppr.ToString();
+
+            return mapper.ToString();
         }
     }
 }
